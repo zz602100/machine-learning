@@ -2,7 +2,7 @@ import streamlit as st
 import joblib
 import pandas as pd
 import shap
-import matplotlib.pyplot as plt
+
 
 # 网页基础配置
 st.set_page_config(page_title="主动脉钙化预测系统", layout="wide")
@@ -43,16 +43,4 @@ if st.button("评估主动脉钙化风险"):
     else:
         st.success(f"✅ 预测无主动脉钙化，钙化发生概率：{calc_prob:.2%}")
 
-    # SHAP力图，对应你论文可视化图shap_force_plot
-    st.subheader("特征贡献SHAP可视化解释")
-    explainer = shap.LinearExplainer(lr_model, input_data)
-    shap_values = explainer.shap_values(input_data)
 
-    fig, ax = plt.subplots(figsize=(10, 3))
-    shap.force_plot(
-        explainer.expected_value,
-        shap_values,
-        input_data,
-        matplotlib=True
-    )
-    st.pyplot(fig)
