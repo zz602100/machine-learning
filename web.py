@@ -10,7 +10,7 @@ st.title("基于逻辑回归的主动脉钙化风险预测与SHAP可解释分析
 # 缓存加载训练好的逻辑回归模型
 @st.cache_resource
 def load_model():
-    return joblib.load("model.pkl")
+    return joblib.load("model4.pkl")
 lr_model = load_model()
 
 # 侧边栏录入两个预测变量
