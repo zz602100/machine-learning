@@ -1,3 +1,5 @@
+import sys
+
 import streamlit as st
 import joblib
 import pandas as pd
@@ -12,6 +14,10 @@ st.title("基于逻辑回归的主动脉钙化风险预测与SHAP可解释分析
 def load_model():
     return joblib.load("model4.pkl")
     return data['Logistic']
+    import sys
+    tmp = joblib.load("model4.pkl")
+print(f"DEBUG: type of data['Logistic'] = {type(tmp['Logistic'])}", file=sys.stderr)
+lr_model = tmp['Logistic']
 lr_model = load_model()
 
 # 侧边栏录入两个预测变量
